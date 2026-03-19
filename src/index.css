@@ -1,0 +1,307 @@
+@import "tailwindcss";
+
+/* Deep Blue Color Palette */
+@theme {
+  --color-luna-lightest: #4A90D9;
+  --color-luna-light: #0f427e;
+  --color-luna-medium: #032c4f;
+  --color-luna-dark: #02203c;
+  --color-luna-darkest: #081635;
+}
+
+/* Professional fonts - Poppins for headings, Inter for body */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(150deg, #081635 0%, #0f427e 50%, #081635 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Headings use Poppins */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Code/monospace elements */
+  code, .mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #081635;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0f427e, #032c4f);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4A90D9, #0f427e);
+}
+
+/* Gradient text utility */
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #4A90D9 0%, #0f427e 50%, #032c4f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glowing effect */
+  .glow {
+    box-shadow: 0 0 20px rgba(15, 66, 126, 0.4),
+                0 0 40px rgba(15, 66, 126, 0.3),
+                0 0 60px rgba(15, 66, 126, 0.2);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(74, 144, 217, 0.5),
+                 0 0 40px rgba(15, 66, 126, 0.3);
+  }
+}
+
+/* Glass morphism */
+@layer components {
+  .glass {
+    background: rgba(3, 44, 79, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(74, 144, 217, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass:hover {
+    background: rgba(3, 44, 79, 0.6);
+    border-color: rgba(74, 144, 217, 0.2);
+  }
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(15, 66, 126, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(15, 66, 126, 0.6);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Section styling */
+@layer base {
+  section {
+    position: relative;
+  }
+}
+
+/* Consistent container */
+@layer components {
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+}
+
+/* Section spacing */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Background particles effect */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(74, 144, 217, 0.3);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Ant Design customization */
+.ant-btn-primary {
+  background: linear-gradient(135deg, #0f427e 0%, #032c4f 100%) !important;
+  border: none !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 15px rgba(15, 66, 126, 0.4) !important;
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #4A90D9 0%, #0f427e 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(15, 66, 126, 0.5) !important;
+}
+
+.ant-btn-primary:active {
+  transform: translateY(0);
+}
+
+.ant-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ant-input,
+.ant-input-textarea textarea {
+  background: rgba(3, 44, 79, 0.6) !important;
+  border: 1px solid rgba(74, 144, 217, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.ant-input:focus,
+.ant-input-textarea textarea:focus {
+  border-color: #4A90D9 !important;
+  box-shadow: 0 0 10px rgba(74, 144, 217, 0.3) !important;
+}
+
+.ant-input::placeholder {
+  color: rgba(74, 144, 217, 0.5) !important;
+}
+
+/* Card hover effects */
+@layer components {
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px -12px rgba(15, 66, 126, 0.2);
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+@layer base {
+  a, button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Subtle hover lift */
+@layer components {
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Navigation active state */
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4A90D9, #0f427e);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+}
+
+/* Radial gradient for smooth orbs */
+@layer utilities {
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
+/* Smoother section transitions */
+@layer base {
+  section {
+    position: relative;
+    will-change: transform;
+  }
+
+  /* Improved focus states */
+  *:focus-visible {
+    outline: 2px solid rgba(15, 66, 126, 0.5);
+    outline-offset: 2px;
+  }
+}
