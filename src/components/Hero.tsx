@@ -30,9 +30,9 @@ const Hero = () => {
   };
 
   const socialLinks = [
-    { icon: <FaGithub />, href: 'https://github.com', label: 'GitHub' },
-    { icon: <FaLinkedin />, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <FaTwitter />, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: <FaGithub />, href: 'https://github.com/VinujaJayasundara-github', label: 'GitHub' },
+    { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/vinuja-jayasundara-925261178', label: 'LinkedIn' },
+    { icon: <FaTwitter />, href: 'https://x.com/Vinuja_o1', label: 'Twitter' },
   ];
 
   return (
@@ -53,7 +53,7 @@ const Hero = () => {
             className="text-center lg:text-left order-2 lg:order-1"
           >
             <motion.div variants={itemVariants} className="mb-4">
-              <span className="inline-block px-4 py-1.5 rounded-full glass text-luna-lightest text-sm font-medium">
+              <span className="inline-block px-4 py-1.5 rounded-full glass text-sm font-medium" style={{ color: 'var(--color-accent-primary)' }}>
               🟢 Open to Work
               </span>
             </motion.div>
@@ -68,14 +68,16 @@ const Hero = () => {
 
             <motion.h2
               variants={itemVariants}
-              className="text-lg md:text-xl text-luna-light mb-3 font-semibold"
+              className="text-lg md:text-xl mb-3 font-semibold"
+              style={{ color: 'var(--color-accent-secondary)' }}
             >
               Software Engineering Undergraduate
             </motion.h2>
 
             <motion.p
               variants={itemVariants}
-              className="text-gray-400 text-base md:text-lg mb-6 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              className="text-base md:text-lg mb-6 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+              style={{ color: 'var(--color-text-secondary)' }}
             >
               A passionate software engineering student dedicated to building innovative 
               solutions and creating impactful digital experiences. Currently exploring 
@@ -95,7 +97,8 @@ const Hero = () => {
                 type="primary"
                 size="large"
                 icon={<FiArrowRight />}
-                className="!h-12 !px-8 !rounded-full !font-semibold !text-sm !shadow-lg !shadow-luna-light/20"
+                className="!h-12 !px-8 !rounded-full !font-semibold !text-sm !shadow-lg"
+                style={{ '--tw-shadow-color': 'var(--color-accent-primary)' } as any}
                 href="#projects"
               >
                 View My Work
@@ -109,7 +112,11 @@ const Hero = () => {
               <Button
                 size="large"
                 icon={<FiDownload />}
-                className="!h-12 !px-8 !rounded-full !font-semibold !text-sm !bg-transparent !border !border-luna-light/30 !text-luna-light hover:!border-luna-light/50 hover:!text-luna-lightest"
+                className="!h-12 !px-8 !rounded-full !font-semibold !text-sm !bg-transparent !border"
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-accent-secondary)'
+                }}
               >
                 Download CV
               </Button>
@@ -127,7 +134,8 @@ const Hero = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-full glass flex items-center justify-center text-lg text-luna-lightest/80 hover:text-luna-lightest"
+                className="w-11 h-11 rounded-full glass flex items-center justify-center text-lg"
+                style={{ color: 'var(--color-accent-primary)' }}
                 whileHover={{ scale: 1.08, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 15 }}
@@ -158,14 +166,28 @@ const Hero = () => {
             <div className="relative">
               {/* Decorative Ring - smoother rotation */}
               <motion.div
-                className="absolute inset-0 rounded-full border border-luna-light/15"
-                style={{ width: '110%', height: '110%', top: '-5%', left: '-5%' }}
+                className="absolute inset-0 rounded-full border"
+                style={{ 
+                  width: '110%', 
+                  height: '110%', 
+                  top: '-5%', 
+                  left: '-5%',
+                  borderColor: 'var(--color-accent-primary)',
+                  opacity: 0.15
+                }}
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
               />
               <motion.div
-                className="absolute inset-0 rounded-full border border-luna-medium/10"
-                style={{ width: '120%', height: '120%', top: '-10%', left: '-10%' }}
+                className="absolute inset-0 rounded-full border"
+                style={{ 
+                  width: '120%', 
+                  height: '120%', 
+                  top: '-10%', 
+                  left: '-10%',
+                  borderColor: 'var(--color-accent-primary)',
+                  opacity: 0.1
+                }}
                 animate={{ rotate: -360 }}
                 transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
               />
@@ -185,7 +207,7 @@ const Hero = () => {
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <span className="text-luna-lightest/90 text-xs font-medium">React.js</span>
+                <span className="text-xs font-medium" style={{ color: 'var(--color-accent-primary)', opacity: 0.9 }}>React.js</span>
               </motion.div>
 
               <motion.div
@@ -193,7 +215,7 @@ const Hero = () => {
                 animate={{ y: [0, 6, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
               >
-                <span className="text-luna-lightest/90 text-xs font-medium">TypeScript</span>
+                <span className="text-xs font-medium" style={{ color: 'var(--color-accent-primary)', opacity: 0.9 }}>TypeScript</span>
               </motion.div>
 
               <motion.div
@@ -201,7 +223,7 @@ const Hero = () => {
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               >
-                <span className="text-luna-lightest/90 text-xs font-medium">Node.js</span>
+                <span className="text-xs font-medium" style={{ color: 'var(--color-accent-primary)', opacity: 0.9 }}>Node.js</span>
               </motion.div>
             </div>
           </motion.div>
@@ -218,9 +240,10 @@ const Hero = () => {
           y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }
         }}
       >
-        <div className="w-5 h-9 rounded-full border border-luna-light/30 flex justify-center pt-2">
+        <div className="w-5 h-9 rounded-full border flex justify-center pt-2" style={{ borderColor: 'var(--color-border)' }}>
           <motion.div
-            className="w-1 h-1 rounded-full bg-luna-light/60"
+            className="w-1 h-1 rounded-full"
+            style={{ backgroundColor: 'var(--color-accent-primary)', opacity: 0.6 }}
             animate={{ y: [0, 10, 0], opacity: [0.6, 0.3, 0.6] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           />

@@ -36,28 +36,28 @@ const Contact = () => {
     {
       icon: <FiMail />,
       title: 'Email',
-      value: 'your.email@example.com',
-      link: 'mailto:your.email@example.com',
+      value: 'vinujajayasundara@gmail.com',
+      link: 'mailto:vinujajayasundara@gmail.com',
     },
     {
       icon: <FiMapPin />,
       title: 'Location',
-      value: 'Your City, Country',
+      value: 'Colombo, Sri Lanka',
       link: null,
     },
     {
       icon: <FiPhone />,
       title: 'Phone',
-      value: '+1 234 567 890',
-      link: 'tel:+1234567890',
+      value: '+93705283277',
+      link: 'tel:+93705283277',
     },
   ];
 
   const socialLinks = [
-    { icon: <FaGithub />, href: 'https://github.com', label: 'GitHub', color: '#ffffff' },
-    { icon: <FaLinkedin />, href: 'https://linkedin.com', label: 'LinkedIn', color: '#0A66C2' },
-    { icon: <FaTwitter />, href: 'https://twitter.com', label: 'Twitter', color: '#1DA1F2' },
-    { icon: <FaInstagram />, href: 'https://instagram.com', label: 'Instagram', color: '#E4405F' },
+    { icon: <FaGithub />, href: 'https://github.com/VinujaJayasundara-github', label: 'GitHub', color: '#ffffff' },
+    { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/vinuja-jayasundara-925261178', label: 'LinkedIn', color: '#0A66C2' },
+    { icon: <FaTwitter />, href: 'https://x.com/Vinuja_o1', label: 'Twitter', color: '#1DA1F2' },
+    { icon: <FaInstagram />, href: 'https://www.instagram.com/vinuja_j/', label: 'Instagram', color: '#E4405F' },
   ];
 
   const handleSubmit = async (values: { name: string; email: string; subject: string; message: string }) => {
@@ -70,8 +70,8 @@ const Contact = () => {
   return (
     <section id="contact" className="section-padding relative" ref={ref}>
       {/* Background accents */}
-      <div className="absolute left-0 top-1/4 w-80 h-80 bg-luna-light/10 rounded-full blur-3xl" />
-      <div className="absolute right-0 bottom-1/4 w-64 h-64 bg-luna-medium/10 rounded-full blur-3xl" />
+      <div className="absolute left-0 top-1/4 w-80 h-80 rounded-full blur-3xl" style={{ backgroundColor: 'var(--color-accent-secondary)', opacity: 0.1 }} />
+      <div className="absolute right-0 bottom-1/4 w-64 h-64 rounded-full blur-3xl" style={{ backgroundColor: 'var(--color-accent-primary)', opacity: 0.1 }} />
       
       <div className="container">
         <motion.div
@@ -81,13 +81,13 @@ const Contact = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="text-luna-light text-sm font-semibold tracking-[0.15em] uppercase">
+            <span className="text-sm font-semibold tracking-[0.15em] uppercase" style={{ color: 'var(--color-accent-secondary)' }}>
               Get In Touch
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3">
               Let's Work <span className="gradient-text">Together</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
+            <p className="mt-4 max-w-2xl mx-auto text-base lg:text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
               Have a project in mind or just want to chat? Feel free to reach out.
               I'm always open to discussing new opportunities and ideas.
             </p>
@@ -96,7 +96,7 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Info Side */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-bold text-white mb-8">
+              <h3 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-text-primary)' }}>
                 Contact Information
               </h3>
 
@@ -110,20 +110,21 @@ const Contact = () => {
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                     transition={{ delay: 0.3 + index * 0.1 }}
                   >
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-luna-light to-luna-medium flex items-center justify-center text-xl text-white">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl text-white" style={{ background: `linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))` }}>
                       {info.icon}
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">{info.title}</p>
+                      <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{info.title}</p>
                       {info.link ? (
                         <a
                           href={info.link}
-                          className="text-white hover:text-luna-lightest transition-colors font-medium"
+                          className="transition-colors font-medium"
+                          style={{ color: 'var(--color-text-primary)' }}
                         >
                           {info.value}
                         </a>
                       ) : (
-                        <p className="text-white font-medium">{info.value}</p>
+                        <p className="font-medium" style={{ color: 'var(--color-text-primary)' }}>{info.value}</p>
                       )}
                     </div>
                   </motion.div>
@@ -132,7 +133,7 @@ const Contact = () => {
 
               {/* Social Links */}
               <div>
-                <h4 className="text-lg font-semibold text-white mb-4">
+                <h4 className="text-lg font-semibold mb-4" style={{ color: 'var(--color-text-primary)' }}>
                   Follow Me
                 </h4>
                 <div className="flex gap-4">
@@ -176,14 +177,14 @@ const Contact = () => {
                     in software engineering. Let's connect!
                   </p>
                 </div>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-luna-light/20 rounded-full blur-2xl" />
+                <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl" style={{ backgroundColor: 'var(--color-accent-secondary)', opacity: 0.2 }} />
               </motion.div>
             </motion.div>
 
             {/* Contact Form Side */}
             <motion.div variants={itemVariants}>
               <div className="glass rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-8">
+                <h3 className="text-2xl font-bold mb-8" style={{ color: 'var(--color-text-primary)' }}>
                   Send Me a Message
                 </h3>
 

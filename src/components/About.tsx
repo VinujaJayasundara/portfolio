@@ -63,7 +63,7 @@ const About = () => {
   return (
     <section id="about" className="section-padding relative" ref={ref}>
       {/* Background accent */}
-      <div className="absolute right-0 top-1/4 w-80 h-80 bg-luna-medium/10 rounded-full blur-3xl" />
+      <div className="absolute right-0 top-1/4 w-80 h-80 rounded-full blur-3xl" style={{ backgroundColor: 'var(--color-accent-primary)', opacity: 0.1 }} />
       
       <div className="container">
         <motion.div
@@ -73,7 +73,7 @@ const About = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="text-luna-light text-sm font-semibold tracking-[0.15em] uppercase">
+            <span className="text-sm font-semibold tracking-[0.15em] uppercase" style={{ color: 'var(--color-accent-secondary)' }}>
               Get to know me
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3">
@@ -94,7 +94,7 @@ const About = () => {
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="aspect-[4/5] bg-gradient-to-br from-luna-dark to-luna-darkest flex items-center justify-center">
+                  <div className="aspect-[4/5] flex items-center justify-center" style={{ background: `linear-gradient(135deg, var(--color-secondary-bg), var(--color-primary-bg))` }}>
                     <img 
                       src={adobePhoto} 
                       alt="Vinuja Jayasundara" 
@@ -103,12 +103,12 @@ const About = () => {
                   </div>
                   
                   {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-luna-darkest/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, var(--color-primary-bg), transparent)' }} />
                 </motion.div>
 
                 {/* Decorative elements */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-luna-light/30 rounded-2xl" />
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 border-luna-medium/30 rounded-2xl" />
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 rounded-2xl" style={{ borderColor: 'var(--color-accent-primary)', opacity: 0.3 }} />
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 border-2 rounded-2xl" style={{ borderColor: 'var(--color-accent-secondary)', opacity: 0.3 }} />
               </div>
 
               {/* Experience Badge */}
@@ -118,7 +118,7 @@ const About = () => {
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <div className="text-3xl font-bold gradient-text">3+</div>
-                <div className="text-luna-lightest text-sm">Years of<br />Learning</div>
+                <div className="text-sm" style={{ color: 'var(--color-accent-primary)' }}>Years of<br />Learning</div>
               </motion.div>
             </motion.div>
 
@@ -126,18 +126,18 @@ const About = () => {
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-8 leading-tight">
                 A Passionate{' '}
-                <span className="text-luna-light">Software Engineering</span>{' '}
+                <span style={{ color: 'var(--color-accent-secondary)' }}>Software Engineering</span>{' '}
                 Student
               </h3>
 
-              <p className="text-gray-400 leading-relaxed mb-6 text-lg">
+              <p className="leading-relaxed mb-6 text-lg" style={{ color: 'var(--color-text-secondary)' }}>
                 I'm currently pursuing my degree in Software Engineering, where I'm 
                 developing a strong foundation in computer science principles and 
                 modern development practices. My journey in tech started with curiosity 
                 and has grown into a deep passion for creating impactful software solutions.
               </p>
 
-              <p className="text-gray-400 leading-relaxed mb-10 text-lg">
+              <p className="leading-relaxed mb-10 text-lg" style={{ color: 'var(--color-text-secondary)' }}>
                 I specialize in full-stack development with a focus on React, TypeScript, 
                 and Node.js. I'm constantly learning and adapting to new technologies, 
                 always striving to write clean, efficient, and maintainable code. 
@@ -156,9 +156,9 @@ const About = () => {
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
                   >
-                    <div className="text-2xl text-luna-light mb-3">{item.icon}</div>
-                    <h4 className="font-semibold text-white mb-1">{item.title}</h4>
-                    <p className="text-gray-400 text-sm">{item.description}</p>
+                    <div className="text-2xl mb-3" style={{ color: 'var(--color-accent-secondary)' }}>{item.icon}</div>
+                    <h4 className="font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>{item.title}</h4>
+                    <p className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>{item.description}</p>
                   </motion.div>
                 ))}
               </div>

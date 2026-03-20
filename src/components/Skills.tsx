@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useTheme } from '../hooks/useTheme';
 import { Progress, Tabs } from 'antd';
 import {
   SiReact,
@@ -79,43 +80,49 @@ const Skills = () => {
     },
   };
 
-  const SkillCard = ({ skill, index }: { skill: typeof skillCategories.frontend.skills[0]; index: number }) => (
-    <motion.div
-      className="glass rounded-xl p-6 card-hover"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ scale: 1.05 }}
-    >
-      <div className="flex items-center gap-4 mb-4">
-        <div
-          className="text-3xl p-3 rounded-lg"
-          style={{ backgroundColor: `${skill.color}20`, color: skill.color }}
-        >
-          {skill.icon}
+  const SkillCard = ({ skill, index }: { skill: typeof skillCategories.frontend.skills[0]; index: number }) => {
+    const { theme } = useTheme();
+    const textColor = theme === 'dark' ? '#ffffff' : '#000000';
+    const secondaryTextColor = theme === 'dark' ? '#9CA3AF' : '#666666';
+    
+    return (
+      <motion.div
+        className="glass rounded-xl p-6 card-hover"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+        transition={{ delay: index * 0.1 }}
+        whileHover={{ scale: 1.05 }}
+      >
+        <div className="flex items-center gap-4 mb-4">
+          <div
+            className="text-3xl p-3 rounded-lg"
+            style={{ backgroundColor: `${skill.color}20`, color: skill.color }}
+          >
+            {skill.icon}
+          </div>
+          <div>
+            <h4 className="font-semibold" style={{ color: textColor }}>{skill.name}</h4>
+            <p className="text-sm" style={{ color: secondaryTextColor }}>{skill.level}%</p>
+          </div>
         </div>
-        <div>
-          <h4 className="font-semibold text-white">{skill.name}</h4>
-          <p className="text-gray-400 text-sm">{skill.level}%</p>
-        </div>
-      </div>
-      <Progress
-        percent={skill.level}
-        showInfo={false}
-        strokeColor={{
-          '0%': '#0f427e',
-          '100%': '#4A90D9',
-        }}
-        trailColor="rgba(74, 144, 217, 0.1)"
-        size="small"
-      />
-    </motion.div>
-  );
+        <Progress
+          percent={skill.level}
+          showInfo={false}
+          strokeColor={{
+            '0%': '#0f427e',
+            '100%': '#4A90D9',
+          }}
+          trailColor="rgba(74, 144, 217, 0.1)"
+          size="small"
+        />
+      </motion.div>
+    );
+  };
 
   const tabItems = Object.entries(skillCategories).map(([key, category]) => ({
     key,
     label: (
-      <span className="text-gray-300 hover:text-luna-lightest transition-colors px-4 py-2">
+      <span className="transition-colors px-4 py-2" style={{ color: 'var(--color-text-secondary)' }}>
         {category.title}
       </span>
     ),
@@ -136,7 +143,7 @@ const Skills = () => {
   return (
     <section id="skills" className="section-padding relative" ref={ref}>
       {/* Background accent */}
-      <div className="absolute left-0 top-1/3 w-80 h-80 bg-luna-light/10 rounded-full blur-3xl" />
+      <div className="absolute left-0 top-1/3 w-80 h-80 rounded-full blur-3xl" style={{ backgroundColor: 'var(--color-accent-secondary)', opacity: 0.1 }} />
       
       <div className="container">
         <motion.div
@@ -146,13 +153,13 @@ const Skills = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="text-luna-light text-sm font-semibold tracking-[0.15em] uppercase">
+            <span className="text-sm font-semibold tracking-[0.15em] uppercase" style={{ color: 'var(--color-accent-secondary)' }}>
               My Expertise
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3">
               Technical <span className="gradient-text">Skills</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
+            <p className="mt-4 max-w-2xl mx-auto text-base lg:text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
               I've worked with a variety of technologies in my journey as a software engineering student.
               Here's a snapshot of my technical toolkit.
             </p>
@@ -226,7 +233,11 @@ const Skills = () => {
               ].map((service, index) => (
                 <motion.div
                   key={service.title}
-                  className="glass rounded-2xl p-8 text-center card-hover group"
+                  className="rounded-2xl p-8 text-center card-hover group"
+                  style={{
+                    background: 'var(--color-secondary-bg)',
+                    border: '1px solid var(--color-border)'
+                  }}
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                   transition={{ delay: 0.6 + index * 0.2 }}
@@ -238,10 +249,10 @@ const Skills = () => {
                   >
                     {service.icon}
                   </motion.div>
-                  <h4 className="text-xl font-semibold text-white mb-4 group-hover:text-luna-lightest transition-colors">
+                  <h4 className="text-xl font-semibold mb-4 group-hover:transition-colors" style={{ color: '#000000' }}>
                     {service.title}
                   </h4>
-                  <p className="text-gray-400">{service.description}</p>
+                  <p style={{ color: '#000000' }}>{service.description}</p>
                 </motion.div>
               ))}
             </div>

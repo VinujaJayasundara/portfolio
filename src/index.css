@@ -1,16 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
-/* Deep Blue Color Palette */
-@theme {
-  --color-luna-lightest: #4A90D9;
-  --color-luna-light: #0f427e;
-  --color-luna-medium: #032c4f;
-  --color-luna-dark: #02203c;
-  --color-luna-darkest: #081635;
+/* CSS Variables for theme colors */
+:root {
+  /* Dark Mode Colors (Default) */
+  --color-primary-bg: #0F172A;
+  --color-secondary-bg: #1E293B;
+  --color-accent-primary: #38BDF8;
+  --color-accent-secondary: #818CF8;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-border: #334155;
+}
+
+html.light {
+  /* Light Mode Colors */
+  --color-primary-bg: #FFFFFF;
+  --color-secondary-bg: #F1F5F9;
+  --color-accent-primary: #0F172A;
+  --color-accent-secondary: #2563EB;
+  --color-text-primary: #000000;
+  --color-text-secondary: #64748B;
+  --color-border: #E2E8F0;
+}
+
+html.dark {
+  /* Explicit dark mode variables */
+  --color-primary-bg: #0F172A;
+  --color-secondary-bg: #1E293B;
+  --color-accent-primary: #38BDF8;
+  --color-accent-secondary: #818CF8;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-border: #334155;
 }
 
 /* Professional fonts - Poppins for headings, Inter for body */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @layer base {
   * {
@@ -23,15 +48,15 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(150deg, #081635 0%, #0f427e 50%, #081635 100%);
-    background-attachment: fixed;
-    color: #ffffff;
+    background-color: var(--color-primary-bg);
+    color: var(--color-text-primary);
     min-height: 100vh;
     overflow-x: hidden;
     line-height: 1.7;
     letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   /* Headings use Poppins */
@@ -52,22 +77,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #081635;
+  background: var(--color-primary-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0f427e, #032c4f);
+  background: var(--color-accent-primary);
   border-radius: 4px;
+  opacity: 0.7;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #4A90D9, #0f427e);
+  opacity: 1;
 }
 
 /* Gradient text utility */
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #4A90D9 0%, #0f427e 50%, #032c4f 100%);
+    background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -75,30 +101,45 @@
 
   /* Glowing effect */
   .glow {
-    box-shadow: 0 0 20px rgba(15, 66, 126, 0.4),
-                0 0 40px rgba(15, 66, 126, 0.3),
-                0 0 60px rgba(15, 66, 126, 0.2);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3),
+                0 0 40px rgba(56, 189, 248, 0.2),
+                0 0 60px rgba(56, 189, 248, 0.1);
+  }
+
+  html.light .glow {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.2),
+                0 0 40px rgba(37, 99, 235, 0.15),
+                0 0 60px rgba(37, 99, 235, 0.1);
   }
 
   .glow-text {
-    text-shadow: 0 0 20px rgba(74, 144, 217, 0.5),
-                 0 0 40px rgba(15, 66, 126, 0.3);
+    text-shadow: 0 0 20px var(--color-accent-primary),
+                 0 0 40px var(--color-accent-secondary);
   }
 }
+
 
 /* Glass morphism */
 @layer components {
   .glass {
-    background: rgba(3, 44, 79, 0.5);
+    background: rgba(30, 41, 59, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(74, 144, 217, 0.1);
+    border: 1px solid var(--color-border);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  html.light .glass {
+    background: rgba(241, 245, 249, 0.6);
+  }
+
   .glass:hover {
-    background: rgba(3, 44, 79, 0.6);
-    border-color: rgba(74, 144, 217, 0.2);
+    background: rgba(30, 41, 59, 0.5);
+    border-color: var(--color-accent-primary);
+  }
+
+  html.light .glass:hover {
+    background: rgba(241, 245, 249, 0.8);
   }
 }
 
@@ -114,10 +155,12 @@
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(15, 66, 126, 0.3);
+    box-shadow: 0 0 20px var(--color-accent-primary);
+    opacity: 0.5;
   }
   50% {
-    box-shadow: 0 0 40px rgba(15, 66, 126, 0.6);
+    box-shadow: 0 0 40px var(--color-accent-primary);
+    opacity: 1;
   }
 }
 
@@ -190,23 +233,31 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: rgba(74, 144, 217, 0.3);
+  background: var(--color-accent-primary);
+  opacity: 0.3;
   border-radius: 50%;
   animation: float 8s ease-in-out infinite;
 }
 
 /* Ant Design customization */
 .ant-btn-primary {
-  background: linear-gradient(135deg, #0f427e 0%, #032c4f 100%) !important;
+  background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%) !important;
   border: none !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  box-shadow: 0 4px 15px rgba(15, 66, 126, 0.4) !important;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3) !important;
+}
+
+html.light .ant-btn-primary {
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2) !important;
 }
 
 .ant-btn-primary:hover {
-  background: linear-gradient(135deg, #4A90D9 0%, #0f427e 100%) !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(15, 66, 126, 0.5) !important;
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4) !important;
+}
+
+html.light .ant-btn-primary:hover {
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3) !important;
 }
 
 .ant-btn-primary:active {
@@ -216,6 +267,142 @@
 .ant-btn {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
+
+/* Input and form styling */
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-picker {
+  background-color: var(--color-secondary-bg) !important;
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-border) !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-input::placeholder,
+.ant-input-number::placeholder {
+  color: var(--color-text-secondary) !important;
+}
+
+.ant-input:hover,
+.ant-input-number:hover,
+.ant-select-selector:hover,
+.ant-picker:hover {
+  border-color: var(--color-accent-primary) !important;
+}
+
+.ant-input:focus,
+.ant-input-number:focus,
+.ant-select-selector:focus-within,
+.ant-picker:focus {
+  border-color: var(--color-accent-primary) !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1) !important;
+}
+
+html.light .ant-input:focus,
+html.light .ant-input-number:focus,
+html.light .ant-select-selector:focus-within,
+html.light .ant-picker:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Label styling */
+.ant-form-item-label > label {
+  color: var(--color-text-primary) !important;
+}
+
+/* Text and heading utilities */
+.text-blur {
+  opacity: 0.6;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive design support */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Theme-aware utility classes replacing luna colors */
+@layer utilities {
+  /* Text colors */
+  .text-primary {
+    color: var(--color-text-primary);
+  }
+
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  .text-accent {
+    color: var(--color-accent-primary);
+  }
+
+  /* Background colors */
+  .bg-primary {
+    background-color: var(--color-primary-bg);
+  }
+
+  .bg-secondary {
+    background-color: var(--color-secondary-bg);
+  }
+
+  .bg-accent {
+    background-color: var(--color-accent-primary);
+  }
+
+  /* Border colors */
+  .border-accent {
+    border-color: var(--color-accent-primary);
+  }
+
+  /* Specific component replacements for old luna colors */
+  .luna-lightest {
+    color: var(--color-accent-primary);
+  }
+
+  .bg-luna-lightest {
+    background-color: var(--color-accent-primary);
+  }
+
+  .luna-light {
+    color: var(--color-accent-secondary);
+  }
+
+  .bg-luna-light {
+    background-color: var(--color-accent-secondary);
+  }
+
+  .border-luna-light {
+    border-color: var(--color-accent-secondary);
+  }
+
+  .text-luna-light {
+    color: var(--color-accent-secondary);
+  }
+
+  .luna-medium {
+    color: var(--color-accent-primary);
+  }
+
+  .bg-luna-medium {
+    background-color: var(--color-accent-primary);
+  }
+
+  .bg-luna-dark {
+    background-color: var(--color-secondary-bg);
+  }
+
+  .text-luna-darkest {
+    color: var(--color-text-primary);
+  }
+
+  .bg-luna-darkest {
+    background-color: var(--color-primary-bg);
+  }
+}
+
 
 .ant-input,
 .ant-input-textarea textarea {

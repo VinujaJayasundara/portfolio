@@ -128,7 +128,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding relative" ref={ref}>
       {/* Background accent */}
-      <div className="absolute right-0 bottom-1/4 w-80 h-80 bg-luna-medium/10 rounded-full blur-3xl" />
+      <div className="absolute right-0 bottom-1/4 w-80 h-80 rounded-full blur-3xl" style={{ backgroundColor: 'var(--color-accent-primary)', opacity: 0.1 }} />
       
       <div className="container">
         <motion.div
@@ -138,13 +138,13 @@ const Projects = () => {
         >
           {/* Section Title */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <span className="text-luna-light text-sm font-semibold tracking-[0.15em] uppercase">
+            <span className="text-sm font-semibold tracking-[0.15em] uppercase" style={{ color: 'var(--color-accent-secondary)' }}>
               My Work
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3">
               Featured <span className="gradient-text">Projects</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
+            <p className="mt-4 max-w-2xl mx-auto text-base lg:text-lg leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
               Here are some of the projects I've worked on. Each one represents a unique challenge
               and an opportunity to learn something new.
             </p>
@@ -162,7 +162,7 @@ const Projects = () => {
                   transition={{ delay: index * 0.2 }}
                 >
                   {/* Project Image */}
-                  <div className="relative h-64 bg-gradient-to-br from-luna-dark to-luna-darkest flex items-center justify-center overflow-hidden">
+                  <div className="relative h-64 flex items-center justify-center overflow-hidden" style={{ background: `linear-gradient(135deg, var(--color-secondary-bg), var(--color-primary-bg))` }}>
                     <motion.div
                       className="text-8xl"
                       whileHover={{ scale: 1.2, rotate: 10 }}
@@ -172,13 +172,14 @@ const Projects = () => {
                     </motion.div>
                     
                     {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-luna-darkest/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4" style={{ backgroundColor: 'var(--color-primary-bg)', opacity: 0 }}>
                       {project.liveUrl && (
                         <motion.a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-12 h-12 rounded-full bg-luna-light flex items-center justify-center text-luna-darkest"
+                          className="w-12 h-12 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: 'var(--color-accent-primary)', color: 'var(--color-primary-bg)' }}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                         >
@@ -190,7 +191,8 @@ const Projects = () => {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white"
+                          className="w-12 h-12 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: 'var(--color-text-primary)' }}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                         >
@@ -201,7 +203,7 @@ const Projects = () => {
 
                     {/* Featured Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full bg-luna-light/20 text-luna-lightest text-xs font-medium">
+                      <span className="px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: 'var(--color-accent-primary)', opacity: 0.2, color: 'var(--color-accent-primary)' }}>
                         Featured
                       </span>
                     </div>
@@ -209,17 +211,18 @@ const Projects = () => {
 
                   {/* Project Info */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-luna-lightest transition-colors">
+                    <h3 className="text-xl font-bold mb-2 group-hover:transition-colors" style={{ color: 'var(--color-text-primary)' }}>
                       {project.title}
                     </h3>
-                    <p className="text-gray-400 mb-4 line-clamp-2">
+                    <p className="mb-4 line-clamp-2" style={{ color: 'var(--color-text-secondary)' }}>
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map(tag => (
                         <Tag
                           key={tag}
-                          className="!bg-luna-dark/50 !border-luna-light/20 !text-luna-lightest !text-xs"
+                          className="!text-xs"
+                          style={{ backgroundColor: 'var(--color-secondary-bg)', borderColor: 'var(--color-border)', color: 'var(--color-accent-primary)' }}
                         >
                           {tag}
                         </Tag>
@@ -241,9 +244,14 @@ const Projects = () => {
                 key={filter.key}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
                   activeFilter === filter.key
-                    ? 'bg-gradient-to-r from-luna-light to-luna-medium text-white'
-                    : 'glass text-gray-300 hover:text-luna-lightest'
+                    ? 'text-white'
+                    : ''
                 }`}
+                style={
+                  activeFilter === filter.key
+                    ? { background: `linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary))` }
+                    : { backgroundColor: 'var(--color-secondary-bg)', color: 'var(--color-text-secondary)', border: `1px solid var(--color-border)` }
+                }
                 onClick={() => setActiveFilter(filter.key)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -270,7 +278,7 @@ const Projects = () => {
               >
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
-                  <div className="text-4xl text-luna-light">
+                  <div className="text-4xl" style={{ color: 'var(--color-accent-secondary)' }}>
                     <FiFolder />
                   </div>
                   <div className="flex gap-3">
@@ -279,7 +287,8 @@ const Projects = () => {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-luna-lightest transition-colors"
+                        className="transition-colors"
+                        style={{ color: 'var(--color-text-secondary)' }}
                       >
                         <FiGithub />
                       </a>
@@ -289,7 +298,8 @@ const Projects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-luna-lightest transition-colors"
+                        className="transition-colors"  
+                        style={{ color: 'var(--color-text-secondary)' }}
                       >
                         <FiExternalLink />
                       </a>
@@ -298,10 +308,10 @@ const Projects = () => {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-luna-lightest transition-colors">
+                <h3 className="text-lg font-semibold mb-2 group-hover:transition-colors" style={{ color: 'var(--color-text-primary)' }}>
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                <p className="text-sm mb-4 line-clamp-3" style={{ color: 'var(--color-text-secondary)' }}>
                   {project.description}
                 </p>
 
@@ -310,7 +320,8 @@ const Projects = () => {
                   {project.tags.slice(0, 3).map(tag => (
                     <span
                       key={tag}
-                      className="text-xs text-luna-light"
+                      className="text-xs"
+                      style={{ color: 'var(--color-accent-secondary)' }}
                     >
                       {tag}
                     </span>
