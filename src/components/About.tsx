@@ -185,6 +185,46 @@ const About = () => {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* Experience Section */}
+          <motion.div variants={itemVariants} className="mt-24">
+            <h3 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+              Professional <span style={{ color: 'var(--color-accent-secondary)' }}>Experience</span>
+            </h3>
+            
+            <div className="max-w-4xl mx-auto space-y-8">
+              <motion.div
+                className="glass rounded-2xl p-8 card-hover"
+                initial={{ opacity: 0, x: -20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                transition={{ delay: 1 }}
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--color-accent-primary)', opacity: 0.2 }}>
+                    <div style={{ color: 'var(--color-accent-primary)' }}>💼</div>
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-xl font-bold mb-1" style={{ color: 'var(--color-text-primary)' }}>
+                      Software Engineering Intern
+                    </h4>
+                    <p className="mb-4" style={{ color: 'var(--color-accent-primary)' }}>
+                      Eminent Brands
+                    </p>
+                    <p className="mb-4 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
+                      Collaborated within an Agile engineering team to troubleshoot defects, optimize codebase quality, and ensure the successful release of software updates. Bridged technical communication between QA and development units, standardizing defect tracking and resolving critical system bugs throughout the SDLC. Completed a rigorous "100 Days of Code" challenge, significantly enhancing technical proficiency in modern JavaScript/TypeScript and front-end architectures.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {['Agile', 'JavaScript', 'TypeScript', 'React', 'QA', 'SDLC'].map(tag => (
+                        <span key={tag} className="text-xs px-3 py-1 rounded-full bg-opacity-10" style={{ backgroundColor: 'var(--color-accent-primary)', color: 'var(--color-accent-primary)' }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

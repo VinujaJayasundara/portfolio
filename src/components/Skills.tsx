@@ -218,17 +218,40 @@ const Skills = () => {
                 {
                   title: 'Frontend Development',
                   description: 'Building responsive and interactive user interfaces with React, TypeScript, and modern CSS frameworks.',
-                  icon: '🎨',
+                  svg: (
+                    <svg className="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                      <path d="M6 8h2m8 0h2M6 12h12M6 16h2m8 0h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                      <circle cx="10" cy="14" r="0.5" fill="currentColor"/>
+                      <circle cx="14" cy="14" r="0.5" fill="currentColor"/>
+                    </svg>
+                  ),
                 },
                 {
                   title: 'Backend Development',
                   description: 'Creating robust APIs and server-side applications with Node.js, Express, and various databases.',
-                  icon: '⚙️',
+                  svg: (
+                    <svg className="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                      <path d="M8 10l2 2-2 2M16 10l-2 2 2 2M12 7v10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M3 8h18" stroke="currentColor" strokeWidth="1.5"/>
+                    </svg>
+                  ),
                 },
                 {
                   title: 'Full-Stack Solutions',
                   description: 'Developing end-to-end applications from concept to deployment with modern tech stacks.',
-                  icon: '🚀',
+                  svg: (
+                    <svg className="w-24 h-24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="2" y="3" width="20" height="9" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                      <path d="M6 7h2m5 0h2M6 10h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M4 13h16" stroke="currentColor" strokeWidth="1.5"/>
+                      <rect x="3" y="15" width="8" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+                      <rect x="13" y="15" width="8" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
+                      <circle cx="7" cy="18" r="1" fill="currentColor"/>
+                      <circle cx="17" cy="18" r="1" fill="currentColor"/>
+                    </svg>
+                  ),
                 },
               ].map((service, index) => (
                 <motion.div
@@ -243,11 +266,11 @@ const Skills = () => {
                   transition={{ delay: 0.6 + index * 0.2 }}
                 >
                   <motion.div
-                    className="text-5xl mb-6"
+                    className="mb-6 flex justify-center text-blue-500"
                     animate={{ y: [0, -10, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: index * 0.3 }}
                   >
-                    {service.icon}
+                    {service.svg}
                   </motion.div>
                   <h4 className="text-xl font-semibold mb-4 group-hover:transition-colors" style={{ color: '#000000' }}>
                     {service.title}
